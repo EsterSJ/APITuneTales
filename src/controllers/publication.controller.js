@@ -26,20 +26,25 @@ const storage = new Storage({
 
 async function getPublicationsParaTi (req,res){
 
-    const { id_user, user } = req.query; 
-    const params = [id_user, user]; 
+    // const { id_user, user } = req.query; 
+    // const params = [id_user, user]; 
+    const { id_user } = req.query; 
+    const params = [id_user]; 
 
     //seleccionamos todas las publicaciones del los usuarios que sigue el usuario logueado
-    let sql = `SELECT * FROM publicaciones p
-    JOIN seguidores s ON p.id_user = s.id_seguido
-    WHERE s.id_user = ?;`;
+    // let sql = `SELECT * FROM publicaciones p
+    // JOIN seguidores s ON p.id_user = s.id_seguido
+    // WHERE s.id_user = ?;`;
+    let sql = `SELECT * FROM publicaciones WHERE user != ?;`;
 
-    if (user != undefined){
-        sql = `SELECT *
-        FROM publicaciones p
-        JOIN usuarios u ON p.id_user = u.id_user
-        WHERE u.user = '${user}';`;
-    }
+
+    // if (user != undefined){
+    //     sql = `SELECT *
+    //     FROM publicaciones p
+    //     JOIN usuarios u ON p.id_user = u.id_user
+    //     WHERE u.user = '${user}';`;
+    //     sql = `SELECT * FROM publicaciones WHERE user != ?;`;
+    // }
 
     try {
         //peticion sql a la BBDD
