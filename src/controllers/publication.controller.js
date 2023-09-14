@@ -35,7 +35,7 @@ async function getPublicationsParaTi (req,res){
     // let sql = `SELECT * FROM publicaciones p
     // JOIN seguidores s ON p.id_user = s.id_seguido
     // WHERE s.id_user = ?;`;
-    let sql = `SELECT * FROM publicaciones WHERE user != ?;`;
+    let sql = `SELECT * FROM publicaciones WHERE id_user != ?;`;
 
 
     // if (user != undefined){
